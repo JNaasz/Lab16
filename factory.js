@@ -8,7 +8,8 @@ app.factory('redditFactory', function($http){
     var redditObject = [];
 
     function pushReddit(){
-      redditObject.push(response.data.data.children);
+      if(response.data.data.children.post_hint === 'image') {
+        redditObject.push(response.data.data.children);
 
       console.log(redditObject);
     }
@@ -19,9 +20,3 @@ app.factory('redditFactory', function($http){
 
     });
   });
-
-
-
-  // if(response.data.data.children.post_hint === 'image'){
-  //     redditObject.push(response.data.data.children);
-  //   }
