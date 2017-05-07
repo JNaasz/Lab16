@@ -2,7 +2,10 @@ var app = angular.module('redditMod');
 
 app.controller('redditController', function($scope, $http, redditFactory){
 
-   $scope.obj = redditFactory.pushReddit();
+   redditFactory.setReddit().then(function(){
+   $scope.obj = redditFactory.getReddit();
+   console.log($scope.obj[0]);
+ });
 
 });
 
