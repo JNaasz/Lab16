@@ -8,7 +8,7 @@
   <body ng-app="redditMod" ng-controller="redditController">
     <h1>This is a test</h1>
 
-    <reddit-post ng-repeat="post in obj"></reddit-post>
+    <reddit-post ng-repeat="post in obj | limitTo: 12"></reddit-post>
 
     <script src="libs/angular.min.js"></script>
     <script src="libs/angular-route.min.js"></script>

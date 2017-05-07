@@ -3,7 +3,15 @@ var app = angular.module('redditMod');
 app.controller('redditController', function($scope, $http, redditFactory){
 
    redditFactory.setReddit().then(function(){
-   $scope.obj = redditFactory.getReddit();
+   var temp = redditFactory.getReddit();
+
+   temp.forEach(function(post, i){
+     if(!post.data.post_hint){
+       temp.splice(i, 1);
+     }
+   })
+
+   $scope.obj = temp;
    console.log($scope.obj[0]);
  });
 
@@ -19,3 +27,8 @@ app.directive('redditPost', function() {
   }
 
 })
+
+
+// if(response.data.data.children.post_hint === 'image') {
+//   redditObject = response.data.data.children;
+// };
